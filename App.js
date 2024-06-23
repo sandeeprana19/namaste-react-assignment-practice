@@ -1,17 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import ReactLogo from "./react.png";
+import User from "./user.png";
 
-const parent = React.createElement("div", { id: "parent" }, [
-  React.createElement("div", { id: "child" }, [
-    React.createElement("h1", {}, "I'm h1"),
-    React.createElement("h2", {}, "I'm h2"),
-  ]),
-  React.createElement("div", { id: "child-2" }, [
-    React.createElement("h1", {}, "I'm h1"),
-    React.createElement("h2", {}, "I'm h2"),
-  ]),
-]);
+const HeaderComponent = () => {
+  return (
+    <div className="header">
+      <div className="logo">
+        <img src={ReactLogo} alt="React logo" />
+      </div>
+      <input type="search" className="search" />
+      <div className="user">
+        <img src={User} alt="User" />
+      </div>
+    </div>
+  );
+};
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-root.render(parent);
+root.render(<HeaderComponent />);
