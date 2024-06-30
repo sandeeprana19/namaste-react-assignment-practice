@@ -181,3 +181,37 @@ header {
   font-weight: 400;
   color: darkgray;
 }
+
+.search-wrap {
+  position: relative;
+}
+
+.search {
+  width: 450px;
+  height: 45px;
+  border: 1px solid gray;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 50px;
+  border-radius: 30px;
+  background: white;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.search-icon-wrap {
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
