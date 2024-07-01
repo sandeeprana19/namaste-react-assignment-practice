@@ -1,14 +1,39 @@
 import RestaurantCard from "../RestaurantCard/RestaurantCard";
 import resList from "../../utils/mockData";
 import SearchIcon from "../../assets/images/search.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Shimmer from "../Shimmer/Shimmer";
 
 const Body = () => {
-  const [listOfRestaurant, setListOfRestaurant] = useState(resList);
-  console.log(listOfRestaurant);
+  const [listOfRestaurants, setListOfRestaurants] = useState([]);
+  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
 
-  return (
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
+
+    const json = await data.json();
+
+    console.log(json);
+
+    setListOfRestaurants(
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+
+    setFilteredRestaurants(
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+  };
+
+  return listOfRestaurants.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <div className="main-wrapper">
         <div className="res-header">
@@ -24,18 +49,14 @@ const Body = () => {
               }}
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
-                  const filteredRestaurant = listOfRestaurant.filter(
+                  const filteredRestaurants = listOfRestaurants.filter(
                     (restaurant) =>
                       restaurant?.info?.name
                         .toLowerCase()
                         .includes(searchText.toLowerCase())
                   );
 
-                  setListOfRestaurant(filteredRestaurant);
-                }
-
-                if (searchText === "") {
-                  setListOfRestaurant(resList);
+                  setFilteredRestaurants(filteredRestaurants);
                 }
               }}
             />
@@ -46,7 +67,7 @@ const Body = () => {
           </div>
         </div>
         <div className="res-container">
-          {listOfRestaurant.map((restaurant) => (
+          {filteredRestaurants.map((restaurant) => (
             <RestaurantCard key={restaurant?.info?.id} resData={restaurant} />
           ))}
         </div>
