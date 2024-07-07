@@ -111,12 +111,17 @@ header {
   gap: 30px;
 }
 
-.res-card,
+.res-card-wrapper,
 .shimmer-card {
   width: 23.12%;
 }
 
+.res-card-wrapper {
+  text-decoration: none;
+}
+
 .res-card {
+  width: 100%;
   display: flex;
   gap: 12px;
   flex-direction: column;
