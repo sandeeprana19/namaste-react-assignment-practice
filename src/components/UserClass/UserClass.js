@@ -32,8 +32,8 @@ class UserClass extends Component {
     const { name, location, avatar_url } = this.state.userInfo;
 
     return (
-      <div className="user">
-        <img src={avatar_url} alt="Avatar" />
+      <div className="border border-solid border-black p-[0.625rem]">
+        <img src={avatar_url} alt="Avatar" className="w-56" />
         <h1>Name: {name}</h1>
         <h2>Location: {location}</h2>
       </div>

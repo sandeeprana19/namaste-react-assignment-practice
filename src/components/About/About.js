@@ -24,10 +24,12 @@ class About extends Component {
     // console.log("Parent render");
 
     return (
-      <div className="body">
-        <div className="main-wrapper">
-          <div className="about">
-            <h1>About Page</h1>
+      <div className="pt-[8.125rem]">
+        <div className="w-[75rem] mx-auto">
+          <div>
+            <h1 className="m-0 text-2xl font-extrabold text-black mb-[1.875rem]">
+              About Page
+            </h1>
 
             <UserClass name="First" />
             <UserClass name="Second" />

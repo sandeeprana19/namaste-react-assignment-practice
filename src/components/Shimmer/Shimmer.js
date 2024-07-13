@@ -1,16 +1,16 @@
 const Shimmer = () => {
   return (
-    <div className="body">
-      <div className="main-wrapper">
-        <div className="shimmer-container">
-          <div className="shimmer-card"></div>
-          <div className="shimmer-card"></div>
-          <div className="shimmer-card"></div>
-          <div className="shimmer-card"></div>
-          <div className="shimmer-card"></div>
-          <div className="shimmer-card"></div>
-          <div className="shimmer-card"></div>
-          <div className="shimmer-card"></div>
+    <div className="pt-[8.125rem]">
+      <div className="w-[75rem] mx-auto">
+        <div className="flex flex-wrap gap-[1.875rem]">
+          <div className="w-[23.12%] no-underline"></div>
+          <div className="w-[23.12%] no-underline"></div>
+          <div className="w-[23.12%] no-underline"></div>
+          <div className="w-[23.12%] no-underline"></div>
+          <div className="w-[23.12%] no-underline"></div>
+          <div className="w-[23.12%] no-underline"></div>
+          <div className="w-[23.12%] no-underline"></div>
+          <div className="w-[23.12%] no-underline"></div>
         </div>
       </div>
     </div>

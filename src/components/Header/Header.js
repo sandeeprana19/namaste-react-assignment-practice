@@ -6,42 +6,61 @@ const Header = () => {
   const [loginBtnText, setLoginBtnText] = useState("Login");
 
   return (
-    <header>
-      <div className="main-wrapper">
-        <div className="header-wrapper">
-          <div className="logo-wrap">
-            <img className="logo" src={LOGO_URL} alt="Yammy eats logo" />
+    <header className="box-border z-50 bg-white w-full py-0 px-5 fixed top-0 left-0 shadow-lg">
+      <div className="w-[75rem] mx-auto">
+        <div className="justify-between items-center flex">
+          <div className="flex items-center justify-center w-20 h-20 overflow-hidden">
+            <img
+              className="w-full h-full object-cover"
+              src={LOGO_URL}
+              alt="Yammy eats logo"
+            />
           </div>
 
-          <ul className="nav">
-            <li className="nav-item">
-              <Link to="/" className="nav-a">
+          <ul className="flex items-center gap-[3.75rem] h-[6.25rem] list-none">
+            <li>
+              <Link
+                to="/"
+                className="text-black flex items-center h-full text-base font-medium no-underline"
+              >
                 Home
               </Link>
             </li>
-            <li className="nav-item">
-              <Link to="/about" className="nav-a">
+            <li>
+              <Link
+                to="/about"
+                className="text-black flex items-center h-full text-base font-medium no-underline"
+              >
                 About Us
               </Link>
             </li>
-            <li className="nav-item">
-              <Link to="/contact" className="nav-a">
+            <li>
+              <Link
+                to="/contact"
+                className="text-black flex items-center h-full text-base font-medium no-underline"
+              >
                 Contact
               </Link>
             </li>
-            <li className="nav-item">
-              <Link to="/grocery" className="nav-a">
+            <li>
+              <Link
+                to="/grocery"
+                className="text-black flex items-center h-full text-base font-medium no-underline"
+              >
                 Grocery
               </Link>
             </li>
-            <li className="nav-item">
-              <Link to="#" className="nav-a">
+            <li>
+              <Link
+                to="#"
+                className="text-black flex items-center h-full text-base font-medium no-underline"
+              >
                 Cart
               </Link>
             </li>
-            <li className="nav-item">
+            <li>
               <button
-                className="login"
+                className="text-white cursor-pointer bg-[#eb2039] border-none rounded-[1.875rem] w-[6.875rem] h-[2.8125rem] py-[0.625rem] px-5 text-base font-medium"
                 onClick={() => {
                   loginBtnText === "Login"
                     ? setLoginBtnText("Logout")

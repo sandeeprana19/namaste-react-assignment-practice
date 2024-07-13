@@ -34,13 +34,15 @@ const Body = () => {
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
-    <div className="body">
-      <div className="main-wrapper">
-        <div className="res-header">
-          <h1>Restaurants</h1>
-          <div className="search-wrap">
+    <div className="pt-[8.125rem]">
+      <div className="w-[75rem] mx-auto">
+        <div className="flex items-center justify-between mb-[1.875rem]">
+          <h1 className="m-0 text-2xl font-extrabold text-black">
+            Restaurants
+          </h1>
+          <div className="relative">
             <input
-              className="search"
+              className="bg-white border border-solid border-gray-900 w-[28.125rem] h-[2.8125rem] py-[0.625rem] pr-[3.125rem] pl-[1.25rem] text-sm font-medium rounded-[1.875rem]"
               type="search"
               placeholder="Search restaurant"
               value={searchText}
@@ -61,17 +63,21 @@ const Body = () => {
               }}
             />
 
-            <div className="search-icon-wrap">
-              <img src={SearchIcon} alt="Search icon" />
+            <div className="flex items-center justify-center w-5 absolute top-1/2 -translate-y-1/2 right-5 overflow-hidden">
+              <img
+                src={SearchIcon}
+                alt="Search icon"
+                className="w-full h-auto"
+              />
             </div>
           </div>
         </div>
-        <div className="res-container">
+        <div className="flex flex-wrap gap-[1.875rem]">
           {filteredRestaurants.map((restaurant) => (
             <Link
               to={"/restaurant/" + restaurant?.info?.id}
               key={restaurant?.info?.id}
-              className="res-card-wrapper"
+              className="w-[23.12%] no-underline"
             >
               <RestaurantCard resData={restaurant} />
             </Link>
