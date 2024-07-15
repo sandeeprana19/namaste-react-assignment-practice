@@ -11,12 +11,12 @@ class About extends Component {
   componentDidMount() {
     // console.log("Parent componentDidMount");
     this.timer = setInterval(() => {
-      console.log("NAMASTE REACT OP");
+      // console.log("NAMASTE REACT OP");
     }, 1000);
   }
 
   componentWillUnmount() {
-    console.log("componentWillUnmount");
+    // console.log("componentWillUnmount");
     clearInterval(this.timer);
   }
 

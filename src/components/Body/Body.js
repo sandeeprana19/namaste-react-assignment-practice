@@ -1,13 +1,15 @@
 import RestaurantCard from "../RestaurantCard/RestaurantCard";
 import SearchIcon from "../../assets/images/search.png";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Shimmer from "../Shimmer/Shimmer";
 import { Link } from "react-router-dom";
+import UserContext from "../../utils/UserContext";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const { loggedInUser, setUserName } = useContext(UserContext);
 
   useEffect(() => {
     fetchData();
@@ -19,8 +21,6 @@ const Body = () => {
     );
 
     const json = await data.json();
-
-    console.log(json);
 
     setListOfRestaurants(
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
@@ -40,35 +40,46 @@ const Body = () => {
           <h1 className="m-0 text-2xl font-extrabold text-black">
             Restaurants
           </h1>
-          <div className="relative">
-            <input
-              className="bg-white border border-solid border-gray-900 w-[28.125rem] h-[2.8125rem] py-[0.625rem] pr-[3.125rem] pl-[1.25rem] text-sm font-medium rounded-[1.875rem]"
-              type="search"
-              placeholder="Search restaurant"
-              value={searchText}
-              onChange={(e) => {
-                setSearchText(e.target.value);
-              }}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") {
-                  const filteredRestaurants = listOfRestaurants.filter(
-                    (restaurant) =>
-                      restaurant?.info?.name
-                        .toLowerCase()
-                        .includes(searchText.toLowerCase())
-                  );
-
-                  setFilteredRestaurants(filteredRestaurants);
-                }
-              }}
-            />
-
-            <div className="flex items-center justify-center w-5 absolute top-1/2 -translate-y-1/2 right-5 overflow-hidden">
-              <img
-                src={SearchIcon}
-                alt="Search icon"
-                className="w-full h-auto"
+          <div className="flex items-center justify-end gap-2">
+            <div className="relative">
+              <input
+                className="bg-white border border-solid border-gray-900 h-[2.8125rem] py-[0.625rem] pr-[3.125rem] pl-[1.25rem] text-sm font-medium rounded-[1.875rem]"
+                type="text"
+                placeholder="Change Value Here"
+                value={loggedInUser}
+                onChange={(e) => setUserName(e.target.value)}
               />
+            </div>
+            <div className="relative">
+              <input
+                className="bg-white border border-solid border-gray-900 w-[28.125rem] h-[2.8125rem] py-[0.625rem] pr-[3.125rem] pl-[1.25rem] text-sm font-medium rounded-[1.875rem]"
+                type="search"
+                placeholder="Search restaurant"
+                value={searchText}
+                onChange={(e) => {
+                  setSearchText(e.target.value);
+                }}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    const filteredRestaurants = listOfRestaurants.filter(
+                      (restaurant) =>
+                        restaurant?.info?.name
+                          .toLowerCase()
+                          .includes(searchText.toLowerCase())
+                    );
+
+                    setFilteredRestaurants(filteredRestaurants);
+                  }
+                }}
+              />
+
+              <div className="flex items-center justify-center w-5 absolute top-1/2 -translate-y-1/2 right-5 overflow-hidden">
+                <img
+                  src={SearchIcon}
+                  alt="Search icon"
+                  className="w-full h-auto"
+                />
+              </div>
             </div>
           </div>
         </div>

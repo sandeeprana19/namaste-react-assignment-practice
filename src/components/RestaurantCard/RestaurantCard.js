@@ -1,9 +1,12 @@
+import { useContext } from "react";
 import { CDN_URL } from "../../utils/constants";
+import UserContext from "../../utils/UserContext";
 
 const RestaurantCard = (props) => {
   const { resData } = props;
   const { cloudinaryImageId, costForTwo, name, avgRating, sla, cuisine } =
     resData?.info;
+  const { loggedInUser } = useContext(UserContext);
 
   return (
     <div className="cursor-pointer flex-col gap-3 w-full transition-all duration-500 ease-in-out flex hover:scale-90">
@@ -24,6 +27,7 @@ const RestaurantCard = (props) => {
         <h3 className="m-0 text-base font-semibold">{avgRating}</h3>
         <h3 className="m-0 text-base font-semibold">{sla?.slaString}</h3>
         <h3 className="m-0 font-normal text-gray">{cuisine}</h3>
+        <h3 className="m-0 font-normal text-gray">User: {loggedInUser}</h3>
       </div>
     </div>
   );

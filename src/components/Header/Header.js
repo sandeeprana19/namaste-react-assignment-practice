@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { LOGO_URL } from "../../utils/constants";
 import { Link } from "react-router-dom";
+import UserContext from "../../utils/UserContext";
 
 const Header = () => {
   const [loginBtnText, setLoginBtnText] = useState("Login");
+  const { loggedInUser } = useContext(UserContext);
 
   return (
     <header className="box-border z-50 bg-white w-full py-0 px-5 fixed top-0 left-0 shadow-lg">
@@ -57,6 +59,14 @@ const Header = () => {
               >
                 Cart
               </Link>
+            </li>
+            <li>
+              <span
+                to="#"
+                className="text-black flex items-center h-full text-base font-medium no-underline"
+              >
+                {loggedInUser}
+              </span>
             </li>
             <li>
               <button
