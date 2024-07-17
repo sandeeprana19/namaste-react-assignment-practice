@@ -2,10 +2,13 @@ import { useContext, useState } from "react";
 import { LOGO_URL } from "../../utils/constants";
 import { Link } from "react-router-dom";
 import UserContext from "../../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [loginBtnText, setLoginBtnText] = useState("Login");
   const { loggedInUser } = useContext(UserContext);
+  const cartItems = useSelector((store) => store.cart.items);
+  console.log(cartItems);
 
   return (
     <header className="box-border z-50 bg-white w-full py-0 px-5 fixed top-0 left-0 shadow-lg">
@@ -54,10 +57,10 @@ const Header = () => {
             </li>
             <li>
               <Link
-                to="#"
+                to="/cart"
                 className="text-black flex items-center h-full text-base font-medium no-underline"
               >
-                Cart
+                Cart - ({cartItems.length} items)
               </Link>
             </li>
             <li>
